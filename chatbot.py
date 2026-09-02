@@ -1,23 +1,17 @@
-import os
-from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-load_dotenv(override=True)
+# Initialize the client directly with your API key
+API_KEY = "AQ.Ab8RN6K6cTcAtiueHLfaUzp0ZyqLonMYfo2mwGEkAeXq_UDKFw"
+client = genai.Client(api_key=API_KEY)
 
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    print("Error: GEMINI_API_KEY not found in .env file.")
-    exit(1)
-
-client = genai.Client(api_key=api_key)
-
+# Assistant configuration
 config = types.GenerateContentConfig(
     system_instruction="You are a helpful and concise AI assistant.",
     temperature=0.7,
 )
 
-# Updated to the active model
+# Start multi-turn conversation session
 chat = client.chats.create(model="gemini-3.6-flash", config=config)
 
 print("--- AI Chatbot is Ready! Type 'exit' to quit. ---\n")
