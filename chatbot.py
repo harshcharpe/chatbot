@@ -6,11 +6,11 @@ API_KEY = "AQ.Ab8RN6K6cTcAtiueHLfaUzp0ZyqLonMYfo2mwGEkAeXq_UDKFw"
 client = genai.Client(api_key=API_KEY)
 
 # Assistant configuration
+
 config = types.GenerateContentConfig(
     system_instruction="You are a helpful and concise AI assistant.",
     temperature=0.7,
 )
-
 # Start multi-turn conversation session
 chat = client.chats.create(model="gemini-3.6-flash", config=config)
 
